@@ -1,0 +1,19 @@
+{
+  "name": "premier-app-sign",
+  "author": "CJ <chengj@ticketek.com.au>",
+  "version": "0.0.3",
+  "scripts": {
+    "start": "node local.js",
+    "clean": "del package-lock.json && rimraf node_modules/",
+    "create": "claudia create --name premier-app-sign --handler lambda.handler --deploy-proxy-api --region ap-southeast-2 --profile claudia --role lambda-kinesis-execution-role",
+    "update": "npm version patch && claudia update --handler lambda.handler --region ap-southeast-2 --profile claudia",
+    "destroy": "claudia destroy --handler lambda.handler --region ap-southeast-2 --profile claudia"
+  },
+  "devDependencies": {
+    "@google-cloud/nodejs-repo-tools": "^2.3.0",
+    "semistandard": "^12.0.1"
+  },
+  "dependencies": {
+    "express": "4.16.3"
+  }
+}
