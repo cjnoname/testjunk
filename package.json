@@ -4,10 +4,13 @@
   "version": "0.0.3",
   "scripts": {
     "start": "node app.js",
+    "deploy": "gcloud app deploy",
     "clean": "del package-lock.json && rimraf node_modules/",
-    "create": "claudia create --name premier-app-sign --handler lambda.handler --deploy-proxy-api --region ap-southeast-2 --profile claudia --role lambda-kinesis-execution-role",
-    "update": "npm version patch && claudia update --handler lambda.handler --region ap-southeast-2 --profile claudia",
-    "destroy": "claudia destroy --handler lambda.handler --region ap-southeast-2 --profile claudia"
+    "lint": "repo-tools lint",
+    "pretest": "npm run lint",
+    "system-test": "repo-tools test app",
+    "test": "npm run system-test",
+    "e2e-test": "repo-tools test deploy"
   },
   "devDependencies": {
     "@google-cloud/nodejs-repo-tools": "^2.3.0",
